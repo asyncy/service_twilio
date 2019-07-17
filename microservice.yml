@@ -12,11 +12,11 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 
-forward:
-  webhooks:
-    http:
-      path: /webhooks
-      port: 5042
+# forward:
+#   webhooks:
+#     http:
+#       path: /webhooks
+#       port: 5042
   # login:
   #   http:
   #     path: /login
@@ -107,7 +107,7 @@ actions:
       #     redirect:
       #       type: string
       #       in: requestBody
-      #       help: url to redirect the user after succeful login
+      #       help: url to redirect the user after successful login
       #   output:
       #     type: string
       #     # help: The users secret access token
