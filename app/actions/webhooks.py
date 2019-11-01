@@ -5,7 +5,7 @@ import requests
 from json import dumps
 from hashlib import sha1
 
-from .app import api, env
+from app import api, env
 
 
 def match_any_if_any(event, events):

@@ -2,7 +2,7 @@ omg: 1
 
 lifecycle:
   startup:
-    command: ["python", "/app/app.py"]
+    command: ["python", "/app/main.py"]
 
 info:
   version: 0.1.0

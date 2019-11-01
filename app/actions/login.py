@@ -4,7 +4,7 @@ import requests
 from json import dumps
 from urllib.parse import urlencode
 
-from .app import api, env
+from app import api, env
 
 
 # only supports one listener atm
