@@ -1,4 +1,5 @@
-# __GitHub__ Open Microservice
+# _GitHub_ Open Microservice
+
 > GitHub API, GraphQL, Webhook and Login Server
 
 [![Open Microservice Specification Version](https://img.shields.io/badge/Open%20Microservice-1.0-477bf3.svg)](https://openmicroservices.org) [![Open Microservices Spectrum Chat](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/open-microservices) [![Open Microservices Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](https://github.com/oms-services/.github/blob/master/CODE_OF_CONDUCT.md) [![Open Microservices Commitzen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) 
@@ -19,6 +20,7 @@ See the [oms-cli](https://github.com/microservices/oms) project to learn more!
 ```
 npm install -g @microservices/oms
 ```
+
 ## Usage
 
 Once you have the `[oms-cli](https://github.com/microservices/oms)` installed, you can run any of the following commands from within this project's root directory:
