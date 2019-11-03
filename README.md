@@ -1,9 +1,9 @@
-# GitHub
+# __GitHub__ Open Microservice
 > GitHub API, GraphQL, Webhook and Login Server
-
 
 [![Open Microservice Specification Version](https://img.shields.io/badge/Open%20Microservice-1.0-477bf3.svg)](https://openmicroservices.org) [![Open Microservices Spectrum Chat](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/open-microservices) [![Open Microservices Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](https://github.com/oms-services/.github/blob/master/CODE_OF_CONDUCT.md) [![Open Microservices Commitzen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ## Introduction
 
 This project [Open Microservice Specification](https://openmicroservices.org), a standard originally created at [Storyscript](https://storyscript.io) for  building highly-portable "microservices" that expose the events, actions, and APIs inside containerized software.
@@ -41,9 +41,7 @@ Once you have the `[oms-cli](https://github.com/microservices/oms)` installed, y
 | APP_ID | `int` | `false` | None | Your GitHub App ID |
 | APP_PRIVATE_KEY | `string` | `false` | None | Your GitHub App private key in PEM format |
 | HOSTNAME | `string` | `false` | None | The GitHub Hostname (for GitHub Enterprise) |
-| API_HOSTNAME | `string` | `false` | None | The GitHub API Hostname (for GitHub Enterprise)
-Default to "api.HOSTNAME"
- |
+| API_HOSTNAME | `string` | `false` | None | The GitHub API Hostname (for GitHub Enterprise) Default to "api.HOSTNAME"  |
 | CLIENT_ID | `string` | `false` | None | The GitHub Oauth Client ID |
 | CLIENT_SECRET | `string` | `false` | None | The GitHub Oauth Client Secret |
 | OAUTH_TOKEN | `string` | `false` | None | A user oauth token to be used if not provided during an action. |
@@ -85,9 +83,7 @@ oms run api \
 | APP_ID | `int` | `false` | None | Your GitHub App ID |
 | APP_PRIVATE_KEY | `string` | `false` | None | Your GitHub App private key in PEM format |
 | HOSTNAME | `string` | `false` | None | The GitHub Hostname (for GitHub Enterprise) |
-| API_HOSTNAME | `string` | `false` | None | The GitHub API Hostname (for GitHub Enterprise)
-Default to "api.HOSTNAME"
- |
+| API_HOSTNAME | `string` | `false` | None | The GitHub API Hostname (for GitHub Enterprise) Default to "api.HOSTNAME"  |
 | CLIENT_ID | `string` | `false` | None | The GitHub Oauth Client ID |
 | CLIENT_SECRET | `string` | `false` | None | The GitHub Oauth Client Secret |
 | OAUTH_TOKEN | `string` | `false` | None | A user oauth token to be used if not provided during an action. |
@@ -115,6 +111,20 @@ oms run graphql \
 
 > Server for GitHub webhooks
 
+#### Action Arguments
+
+| Argument Name | Type | Required | Default | Description |
+|:------------- |:---- |:-------- |:--------|:----------- |
+
+| APP_ID | `int` | `false` | None | Your GitHub App ID |
+| APP_PRIVATE_KEY | `string` | `false` | None | Your GitHub App private key in PEM format |
+| HOSTNAME | `string` | `false` | None | The GitHub Hostname (for GitHub Enterprise) |
+| API_HOSTNAME | `string` | `false` | None | The GitHub API Hostname (for GitHub Enterprise) Default to "api.HOSTNAME"  |
+| CLIENT_ID | `string` | `false` | None | The GitHub Oauth Client ID |
+| CLIENT_SECRET | `string` | `false` | None | The GitHub Oauth Client Secret |
+| OAUTH_TOKEN | `string` | `false` | None | A user oauth token to be used if not provided during an action. |
+| WEBHOOK_SECRET | `string` | `false` | None | Used to check the webhook payload signature. |
+| USER_AGENT | `string` | `false` | None | GitHub requires a the User-Agent header defined. |
 
 ``` shell
 oms run events \ 
