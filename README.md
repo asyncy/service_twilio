@@ -23,7 +23,7 @@ npm install -g @microservices/oms
 
 ## Usage
 
-Once you have the `[oms-cli](https://github.com/microservices/oms)` installed, you can run any of the following commands from within this project's root directory:
+Once you have the [oms-cli](https://github.com/microservices/oms) installed, you can run any of the following commands from within this project's root directory:
 
 ### api
 
