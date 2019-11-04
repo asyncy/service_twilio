@@ -1,5 +1,4 @@
 # _GitHub_ Open Microservice
-
 > GitHub API, GraphQL, Webhook and Login Server
 
 [![Open Microservice Specification Version](https://img.shields.io/badge/Open%20Microservice-1.0-477bf3.svg)](https://openmicroservices.org) [![Open Microservices Spectrum Chat](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/open-microservices) [![Open Microservices Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](https://github.com/oms-services/.github/blob/master/CODE_OF_CONDUCT.md) [![Open Microservices Commitzen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) 
@@ -7,7 +6,7 @@
 
 ## Introduction
 
-This project [Open Microservice Specification](https://openmicroservices.org), a standard originally created at [Storyscript](https://storyscript.io) for  building highly-portable "microservices" that expose the events, actions, and APIs inside containerized software.
+This project is an example implementation of the [Open Microservice Specification](https://openmicroservices.org), a standard originally created at [Storyscript](https://storyscript.io) for building highly-portable "microservices" that expose the events, actions, and APIs inside containerized software.
 
 ## Getting Started
 
@@ -23,13 +22,16 @@ npm install -g @microservices/oms
 
 ## Usage
 
+### Open Microservices CLI Usage
+
 Once you have the [oms-cli](https://github.com/microservices/oms) installed, you can run any of the following commands from within this project's root directory:
 
-### api
+#### Actions
+
+##### api
 
 > Make an API request to the GitHub REST API
-
-#### Action Arguments
+##### Action Arguments
 
 | Argument Name | Type | Required | Default | Description |
 |:------------- |:---- |:-------- |:--------|:----------- |
@@ -70,11 +72,10 @@ oms run api \
         -e USER_AGENT=$USER_AGENT 
 ```
 
-### graphql
+##### graphql
 
 > Query GitHub GraphQL
-
-#### Action Arguments
+##### Action Arguments
 
 | Argument Name | Type | Required | Default | Description |
 |:------------- |:---- |:-------- |:--------|:----------- |
@@ -109,15 +110,13 @@ oms run graphql \
         -e USER_AGENT=$USER_AGENT 
 ```
 
-### events
+##### events
 
 > Server for GitHub webhooks
-
-#### Action Arguments
+##### Action Arguments
 
 | Argument Name | Type | Required | Default | Description |
 |:------------- |:---- |:-------- |:--------|:----------- |
-
 | APP_ID | `int` | `false` | None | Your GitHub App ID |
 | APP_PRIVATE_KEY | `string` | `false` | None | Your GitHub App private key in PEM format |
 | HOSTNAME | `string` | `false` | None | The GitHub Hostname (for GitHub Enterprise) |
