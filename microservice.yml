@@ -2,7 +2,7 @@ omg: 1
 
 lifecycle:
   startup:
-    command: ["python", "/app/app.py"]
+    command: ["python", "/app/main.py"]
 
 info:
   version: 0.1.0
@@ -12,11 +12,12 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 
-# forward:
-#   webhooks:
-#     http:
-#       path: /webhooks
-#       port: 5042
+expose:
+  webhooks:
+    http:
+      method: post
+      path: /webhooks
+      port: 5042
   # login:
   #   http:
   #     path: /login
@@ -27,7 +28,7 @@ actions:
     help: Make an API request to the GitHub REST API
     arguments:
       method:
-        type: string
+        type: enum
         in: requestBody
         default: get
         enum:
@@ -132,6 +133,15 @@ actions:
               See https://developer.github.com/webhooks/#events for full list
         output:
           type: object
+          properties:
+            event:
+              type: string
+            payload:
+              type: map
+                keys:
+                  type: string
+                values:
+                  type: any
         http:
           port: 5042
           subscribe:

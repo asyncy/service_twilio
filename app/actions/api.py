@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .app import api, GitHub
+from app import api, GitHub
 
 @api.route('/api')
 async def _api(req, resp):
