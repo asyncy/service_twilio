@@ -1,0 +1,18 @@
+name: Open Microservices Specification Validation
+
+on: [pull_request]
+
+jobs:
+  oms-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Install OMS CLI
+        run: yarn add @microservices/oms
+
+      - name: Validate microservice.yml
+        run: node_modules/.bin/oms validate
