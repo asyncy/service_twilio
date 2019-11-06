@@ -4,6 +4,7 @@ import hmac
 import json
 import requests
 from hashlib import sha1
+from urllib.parse import parse_qs
 
 from app import api, env
 
@@ -79,6 +80,8 @@ async def webhooks(req, resp):
     
     eventid = req.headers.get('X-GitHub-Delivery')
     event = req.headers.get('X-GitHub-Event')
+    content_type = req.headers.get('Content-Type')
+
     if not Subscriptions.is_listening_for(event):
         resp.text = f'Accepted, but not listening for {event} events.'
         return
@@ -94,8 +97,16 @@ async def webhooks(req, resp):
         mac = hmac.new(key, data, 'sha1')
         assert hmac.compare_digest(mac.hexdigest(), signature)
 
+    decoded_data = data.decode()
+    if content_type == 'application/x-www-form-urlencoded':
+        payload = json.loads(parse_qs(decoded_data)["payload"][0])
+    elif content_type == 'application/json':
+        payload = json.loads(decoded_data)
+    else:
+        raise Exception('Unknown content-type %s' % content_type)
+
     Subscriptions.publish(
         eventid, event,
-        {'event': event, 'payload': json.loads(data.decode())})
+        {'event': event, 'payload': payload})
     
     resp.text = 'Accepted'
