@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import hmac
+import json
 import requests
-from json import dumps
 from hashlib import sha1
+from urllib.parse import parse_qs
 
-from .app import api, env
+from app import api, env
 
 
 def match_any_if_any(event, events):
@@ -42,7 +43,7 @@ class Subscriptions:
                 requests.post(
                     sub['endpoint'],
                     headers={'Content-Type': 'application/json'},
-                    data=dumps(dict(
+                    data=json.dumps(dict(
                         eventType=event,
                         cloudEventsVersion='0.1',
                         contentType='application/vnd.omg.object+json',
@@ -75,10 +76,12 @@ async def webhooks(req, resp):
     """
     Handle incoming GitHub webhooks
     """
-    data = await req.media()
+    data = await req.content
     
     eventid = req.headers.get('X-GitHub-Delivery')
     event = req.headers.get('X-GitHub-Event')
+    content_type = req.headers.get('Content-Type')
+
     if not Subscriptions.is_listening_for(event):
         resp.text = f'Accepted, but not listening for {event} events.'
         return
@@ -89,11 +92,21 @@ async def webhooks(req, resp):
 
         sha_name, signature = signature.split('=')
         assert sha_name == 'sha1'
-        
-        mac = hmac.new(env.webhook_secret, msg=data, digestmod='sha1')
 
-        assert str(mac.hexdigest()) == str(signature)
+        key = env.webhook_secret.encode()
+        mac = hmac.new(key, data, 'sha1')
+        assert hmac.compare_digest(mac.hexdigest(), signature)
 
-    Subscriptions.publish(eventid, event, {'event': event, 'payload': data})
+    decoded_data = data.decode()
+    if content_type == 'application/x-www-form-urlencoded':
+        payload = json.loads(parse_qs(decoded_data)["payload"][0])
+    elif content_type == 'application/json':
+        payload = json.loads(decoded_data)
+    else:
+        raise Exception('Unknown content-type %s' % content_type)
+
+    Subscriptions.publish(
+        eventid, event,
+        {'event': event, 'payload': payload})
     
     resp.text = 'Accepted'
