@@ -1,8 +1,8 @@
-omg: 1
+oms: 1
 
 lifecycle:
   startup:
-    command: ["python", "/app/main.py"]
+    command: ['python', '/app/main.py']
 
 info:
   version: 0.1.0
@@ -54,7 +54,9 @@ actions:
         in: requestBody
       token:
         type: string
-        help: A oauth user access token to use during the request for authentication.
+        help:
+          A oauth user access token to use during the request for
+          authentication.
         in: requestBody
       iid:
         type: int
@@ -80,7 +82,9 @@ actions:
         in: requestBody
       token:
         type: string
-        help: A oauth user access token to use during the request for authentication.
+        help:
+          A oauth user access token to use during the request for
+          authentication.
         in: requestBody
       iid:
         type: int
