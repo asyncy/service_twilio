@@ -138,6 +138,7 @@ actions:
               type: string
             payload:
               type: map
+              map:
                 keys:
                   type: string
                 values:
