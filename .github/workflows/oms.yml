@@ -1,6 +1,7 @@
-name: Open Microservices Specification Validation
+name: Open Microservices Validation
 
-on: [pull_request]
+# Trigger the workflow on push or pull request
+on: [push, pull_request]
 
 jobs:
   oms-validate:
@@ -9,10 +10,10 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: '12.x'
 
-      - name: Install OMS CLI
+      - name: Install Open Microservices CLI
         run: yarn add @microservices/oms
 
-      - name: Validate microservice.yml
+      - name: Validate `oms.yml`
         run: node_modules/.bin/oms validate
