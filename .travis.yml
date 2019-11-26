@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - '12'
+
+services:
+  - docker
+
+before_install:
+  - npm i @microservices/cli
+
+script:
+  - npx oms build
