@@ -1,28 +1,26 @@
-omg: 1
-
-lifecycle:
-  startup:
-    command: ["python", "/app/main.py"]
-
+oms: 1
 info:
   version: 0.1.0
   title: GitHub
-  description: GitHub API, GraphQL, Webhook and Login Server
+  description: 'GitHub API, GraphQL, Webhook and Login Server'
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT
-
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: Open Microservices
+    url: 'https://openmicroservices.org'
+    email: core@openmicroservices.org
+lifecycle:
+  startup:
+    command:
+      - python
+      - /app/main.py
 expose:
   webhooks:
     http:
       method: post
       path: /webhooks
       port: 5042
-  # login:
-  #   http:
-  #     path: /login
-  #     port: 5042
-
 actions:
   api:
     help: Make an API request to the GitHub REST API
@@ -54,7 +52,9 @@ actions:
         in: requestBody
       token:
         type: string
-        help: A oauth user access token to use during the request for authentication.
+        help: >-
+          A oauth user access token to use during the request for
+          authentication.
         in: requestBody
       iid:
         type: int
@@ -67,7 +67,6 @@ actions:
       port: 5042
       method: post
       path: /api
-
   graphql:
     help: Query GitHub GraphQL
     arguments:
@@ -80,7 +79,9 @@ actions:
         in: requestBody
       token:
         type: string
-        help: A oauth user access token to use during the request for authentication.
+        help: >-
+          A oauth user access token to use during the request for
+          authentication.
         in: requestBody
       iid:
         type: int
@@ -93,36 +94,9 @@ actions:
       port: 5042
       method: post
       path: /graphql
-
   events:
     help: Server for GitHub webhooks
     events:
-      # login:
-      #   arguments:
-      #     scope:
-      #       type: list
-      #       in: requestBody
-      #       help: |
-      #         List of scopes during login
-      #         https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
-      #     redirect:
-      #       type: string
-      #       in: requestBody
-      #       help: url to redirect the user after successful login
-      #   output:
-      #     type: string
-      #     # help: The users secret access token
-      #   http:
-      #     port: 5042
-      #     subscribe:
-      #       method: post
-      #       path: /login/subscribe
-      #       contentType: application/json
-      #     unsubscribe:
-      #       method: post
-      #       path: /login/unsubscribe
-      #       contentType: application/json
-
       webhooks:
         arguments:
           events:
@@ -153,29 +127,24 @@ actions:
             method: post
             path: /webhooks/unsubscribe
             contentType: application/json
-
 environment:
   APP_ID:
     help: Your GitHub App ID
     type: int
-    # secret: false
   APP_PRIVATE_KEY:
     help: Your GitHub App private key in PEM format
     type: string
   HOSTNAME:
     help: The GitHub Hostname (for GitHub Enterprise)
     type: string
-    # secret: false
   API_HOSTNAME:
     type: string
     help: |
       The GitHub API Hostname (for GitHub Enterprise)
       Default to "api.HOSTNAME"
-    # secret: false
   CLIENT_ID:
     help: The GitHub Oauth Client ID
     type: string
-    # secret: false
   CLIENT_SECRET:
     help: The GitHub Oauth Client Secret
     type: string
@@ -189,4 +158,3 @@ environment:
     help: GitHub requires a the User-Agent header defined.
     type: string
     default: Undefined
-    # secret: false
